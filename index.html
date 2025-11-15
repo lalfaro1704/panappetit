@@ -550,15 +550,64 @@
       </div>
     </section>
 
-    <!-- NOSOTROS / OFICIO -->
-    <section class="section reveal" id="nosotros">
+    <!-- ZONA DE DESPACHO / LOCALES -->
+    <section class="section reveal" id="locales">
       <div class="section-header">
-        <div class="section-kicker">Nuestro oficio</div>
-        <h2 class="section-title">Hacemos que cada desayuno se sienta como domingo.</h2>
+        <div class="section-kicker">Llegamos a ti</div>
+        <h2 class="section-title">Locales y zona de despacho</h2>
+      </div>
+
+      <div class="zone-strip">
+        <div>
+          <p class="zone-text-main">Retira en nuestras sucursales Panappetit o recibe en casa.</p>
+          <p style="font-size: 12px; margin-top: 4px; color: #d3b6a0;">
+            Algunos productos se pueden ajustar según la realidad de cada local.
+          </p>
+        </div>
+        <div class="zone-tags">
+          <span class="zone-tag">Ñuñoa</span>
+          <span class="zone-tag">Independencia</span>
+          <span class="zone-tag">Santiago Centro - Parque Almagro</span>
+          <span class="zone-tag">Santiago Centro - Franklin</span>
+          <span class="zone-tag">La Florida</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAN DE JAMÓN DESTACADO -->
+    <section class="section reveal" id="jamon">
+      <div class="section-header">
+        <div class="section-kicker">Edición especial</div>
+        <h2 class="section-title">Pan de Jamón Panappetit</h2>
         <p class="section-sub">
-          En Panappetit mezclamos café de especialidad, panes recién horneados y un brunch pensado para compartir
-          momentos. Desde el local hasta tu casa, la idea es siempre la misma: hacerte parar y decir "wow".
+          Nuestro pan de jamón se reserva rápido. Si quieres asegurarte el tuyo para las fiestas, este es el lugar.
         </p>
+      </div>
+
+      <div class="jamon-block">
+        <div class="jamon-image">
+          <span class="jamon-pill">Reserva anticipada</span>
+          <img
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
+            alt="Pan de jamón"
+          />
+        </div>
+
+        <div class="jamon-copy">
+          <h3>Reserva tu pan de jamón</h3>
+          <p>
+            Masa suave, relleno generoso y ese toque ahumado que se siente a casa. Hecho en tandas limitadas para cuidar
+            cada detalle.
+          </p>
+          <p class="jamon-meta">Tamaños disponibles: familiar y individual · Retiro en local o envío en zonas seleccionadas.</p>
+
+          <div class="jamon-actions">
+            <button class="btn btn-primary" onclick="handleReserve()">Reservar</button>
+            <button class="btn btn-outline" onclick="handleBuy()">Comprar ahora</button>
+          </div>
+
+          <div class="jamon-note" id="jamon-note"></div>
+        </div>
       </div>
     </section>
 
@@ -613,66 +662,6 @@
             </p>
           </div>
         </article>
-      </div>
-    </section>
-
-    <!-- PAN DE JAMÓN DESTACADO -->
-    <section class="section reveal" id="jamon">
-      <div class="section-header">
-        <div class="section-kicker">Edición especial</div>
-        <h2 class="section-title">Pan de Jamón Panappetit</h2>
-        <p class="section-sub">
-          Nuestro pan de jamón se reserva rápido. Si quieres asegurarte el tuyo para las fiestas, este es el lugar.
-        </p>
-      </div>
-
-      <div class="jamon-block">
-        <div class="jamon-image">
-          <span class="jamon-pill">Reserva anticipada</span>
-          <img
-            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
-            alt="Pan de jamón"
-          />
-        </div>
-
-        <div class="jamon-copy">
-          <h3>Reserva tu pan de jamón</h3>
-          <p>
-            Masa suave, relleno generoso y ese toque ahumado que se siente a casa. Hecho en tandas limitadas para cuidar
-            cada detalle.
-          </p>
-          <p class="jamon-meta">Tamaños disponibles: familiar y individual · Retiro en local o envío en zonas seleccionadas.</p>
-
-          <div class="jamon-actions">
-            <button class="btn btn-primary" onclick="handleReserve()">Reservar</button>
-            <button class="btn btn-outline" onclick="handleBuy()">Comprar ahora</button>
-          </div>
-
-          <div class="jamon-note" id="jamon-note"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ZONA DE DESPACHO / LOCALES -->
-    <section class="section reveal" id="locales">
-      <div class="section-header">
-        <div class="section-kicker">Llegamos a ti</div>
-        <h2 class="section-title">Locales y zona de despacho</h2>
-      </div>
-
-      <div class="zone-strip">
-        <div>
-          <p class="zone-text-main">Retira en nuestras sucursales Panappetit o recibe en casa.</p>
-          <p style="font-size: 12px; margin-top: 4px; color: #d3b6a0;">
-            Zona de despacho referencial. Se puede ajustar según la realidad de tus locales.
-          </p>
-        </div>
-        <div class="zone-tags">
-          <span class="zone-tag">Ñuñoa</span>
-          <span class="zone-tag">Providencia</span>
-          <span class="zone-tag">Las Condes</span>
-          <span class="zone-tag">La Reina</span>
-        </div>
       </div>
     </section>
   </main>
