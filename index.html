@@ -3,529 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panappetit · Dulces momentos sabores eternos</title>
-  <style>
-    :root {
-      --pan-orange: #e27a3f;
-      --pan-orange-dark: #cf6a33;
-      --pan-cream: #fff7f0;
-      --pan-brown: #4b2b22;
-      --pan-pink: #f7d0c9;
-      --text-main: #1b130f;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background-color: var(--pan-cream);
-      color: var(--text-main);
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* NAV */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 20;
-      background: rgba(255, 247, 240, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-    }
-
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-placeholder {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: #000;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      font-size: 13px;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 3px;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--pan-orange);
-      transition: width 0.2s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 8px 18px;
-      border-radius: 999px;
-      border: none;
-      background: var(--pan-orange);
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 6px 16px rgba(226, 122, 63, 0.4);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      background: var(--pan-orange-dark);
-      box-shadow: 0 10px 22px rgba(226, 122, 63, 0.45);
-    }
-
-    main {
-      margin-top: 70px;
-    }
-
-    /* HERO estilo Mestiere */
-    .hero {
-      position: relative;
-      max-width: 1120px;
-      margin: 40px auto 32px;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.22);
-      background: #000;
-      color: white;
-      min-height: 360px;
-    }
-
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.05);
-      filter: brightness(0.9);
-    }
-
-    .hero-gradient {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.25));
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 32px 34px 30px;
-      gap: 18px;
-      height: 100%;
-    }
-
-    .hero-tagline {
-      background: rgba(0, 0, 0, 0.8);
-      display: inline-block;
-      padding: 8px 14px;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      border-radius: 999px;
-    }
-
-    .hero-title-block {
-      background: #000;
-      display: inline-block;
-      padding: 10px 16px;
-      margin-bottom: 4px;
-    }
-
-    .hero-title {
-      font-size: clamp(30px, 4vw, 36px);
-      line-height: 1.08;
-      font-weight: 750;
-    }
-
-    .hero-sub {
-      font-size: 14px;
-      max-width: 360px;
-      color: #f5e2d8;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      border: none;
-      padding: 10px 24px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    .btn-primary {
-      background: white;
-      color: #000;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
-    }
-
-    .btn-secondary {
-      background: rgba(0, 0, 0, 0.7);
-      color: #fbe0cf;
-    }
-
-    .btn-secondary:hover {
-      background: #000;
-      transform: translateY(-2px);
-    }
-
-    .hero-note {
-      font-size: 12px;
-      color: #f0d6c9;
-    }
-
-    /* SECTIONS GENERALES */
-    .section {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 32px 20px;
-    }
-
-    .section-header {
-      margin-bottom: 18px;
-    }
-
-    .section-kicker {
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #a7795e;
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--pan-brown);
-    }
-
-    .section-sub {
-      font-size: 14px;
-      color: #6b4b39;
-      max-width: 520px;
-      margin-top: 4px;
-    }
-
-    /* REVEAL ANIMATIONS */
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* MOMENTOS GRID */
-    .moments-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    .moment-card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .moment-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .moment-img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-
-    .moment-body {
-      padding: 14px 14px 16px;
-    }
-
-    .moment-title {
-      font-size: 15px;
-      font-weight: 650;
-      margin-bottom: 4px;
-      color: var(--pan-brown);
-    }
-
-    .moment-text {
-      font-size: 13px;
-      color: #7a5d49;
-    }
-
-    /* BLOQUE PAN DE JAMÓN */
-    .jamon-block {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 24px;
-      align-items: center;
-      background: #fff;
-      border-radius: 18px;
-      padding: 20px 22px;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .jamon-image {
-      border-radius: 14px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .jamon-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transform: scale(1.02);
-    }
-
-    .jamon-pill {
-      position: absolute;
-      left: 16px;
-      top: 16px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 6px 12px;
-      border-radius: 999px;
-    }
-
-    .jamon-copy h3 {
-      font-size: 22px;
-      margin-bottom: 6px;
-      color: var(--pan-brown);
-    }
-
-    .jamon-copy p {
-      font-size: 14px;
-      color: #6b4b39;
-      margin-bottom: 12px;
-    }
-
-    .jamon-meta {
-      font-size: 13px;
-      color: #a36f4f;
-      margin-bottom: 16px;
-    }
-
-    .jamon-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--pan-brown);
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--pan-orange);
-      color: var(--pan-orange-dark);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    .jamon-note {
-      font-size: 11px;
-      color: #9c7560;
-      margin-top: 8px;
-    }
-
-    /* ZONA DESPACHO / LOCALES */
-    .zone-strip {
-      background: #111;
-      color: #f9e2d5;
-      border-radius: 16px;
-      padding: 18px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .zone-text-main {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .zone-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .zone-tag {
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: 40px;
-      padding: 24px 20px 30px;
-      background: #111;
-      color: #f3e0d4;
-    }
-
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: space-between;
-      font-size: 13px;
-    }
-
-    .footer-column-title {
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .footer-bottom {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 11px;
-      color: #a98b77;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 880px) {
-      .moments-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .jamon-block {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav-inner {
-        padding-inline: 14px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        margin-inline: 14px;
-      }
-
-      .section {
-        padding-inline: 16px;
-      }
-
-      .moments-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-  </style>
+  <title>Panappetit · Momentos con sabor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
 </head>
 <body>
   <header class="nav">
     <div class="nav-inner">
       <div class="nav-left">
+        <!-- Aquí puedes reemplazar el div por el logo real -->
         <div class="logo-placeholder"></div>
         <div class="brand-name">Panappetit</div>
       </div>
       <nav class="nav-links">
-        <a href="#jamon">Pan de Jamón</a>
+        <a href="#nosotros">Nosotros</a>
         <a href="#momentos">Momentos</a>
+        <a href="#jamon">Pan de Jamón</a>
         <a href="#locales">Locales</a>
       </nav>
-      <button class="nav-cta" onclick="alert('Aquí iría el link para hacer un pedido (Justo, Rappi, web propia, etc.)')">Hacer un pedido</button>
+      <button class="nav-cta" id="nav-order-btn">
+        Hacer un pedido
+      </button>
     </div>
   </header>
 
   <main>
-    <!-- HERO estilo Mestiere pero Panappetit -->
+    <!-- HERO -->
     <section class="hero reveal" id="inicio">
       <img
         src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80"
@@ -539,50 +42,31 @@
           <div class="hero-title">¡Llegamos a tu mesa con sabor Panappetit!</div>
         </div>
         <p class="hero-sub">
-          Brunchs, panes de masa madre, pan de jamón y cosas ricas para convertir cualquier día en algo especial.
+          Brunchs, panes de masa madre, pan de jamón y cosas ricas para convertir
+          cualquier día en algo especial.
         </p>
         <div class="hero-actions">
-          <button class="btn btn-primary" onclick="document.getElementById('momentos').scrollIntoView({behavior: 'smooth'})">Ver carta inspirada</button>
-          <button class="btn btn-secondary" onclick="document.getElementById('jamon').scrollIntoView({behavior: 'smooth'})">Reservar pan de jamón</button>
+          <button class="btn btn-primary" data-scroll-target="#momentos">
+            Ver carta inspirada
+          </button>
+          <button class="btn btn-secondary" data-scroll-target="#jamon">
+            Reservar pan de jamón
+          </button>
         </div>
         <p class="hero-note">Todo con amor sabe mejor.</p>
       </div>
     </section>
 
-    <!-- PAN DE JAMÓN DESTACADO -->
-    <section class="section reveal" id="jamon">
+    <!-- NOSOTROS -->
+    <section class="section reveal" id="nosotros">
       <div class="section-header">
-        <div class="section-kicker">Edición especial</div>
-        <h2 class="section-title">Pan de Jamón Panappetit</h2>
+        <div class="section-kicker">Nuestro oficio</div>
+        <h2 class="section-title">Hacemos que cada desayuno se sienta como domingo.</h2>
         <p class="section-sub">
-          Nuestro pan de jamón se reserva rápido. Si quieres asegurarte el tuyo para las fiestas, este es el lugar.
+          En Panappetit mezclamos café de especialidad, panes recién horneados y un
+          brunch pensado para compartir momentos. Desde el local hasta tu casa, la idea
+          es siempre la misma: hacerte parar y decir "wow".
         </p>
-      </div>
-
-      <div class="jamon-block">
-        <div class="jamon-image">
-          <span class="jamon-pill">Reserva anticipada</span>
-          <img
-            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
-            alt="Pan de jamón"
-          />
-        </div>
-
-        <div class="jamon-copy">
-          <h3>Reserva tu pan de jamón</h3>
-          <p>
-            Masa suave, relleno generoso y ese toque ahumado que se siente a casa. Hecho en tandas limitadas para cuidar
-            cada detalle.
-          </p>
-          <p class="jamon-meta">Tamaños disponibles: familiar y individual · Retiro en local o envío en zonas seleccionadas.</p>
-
-          <div class="jamon-actions">
-            <button class="btn btn-primary" onclick="handleReserve()">Reservar</button>
-            <button class="btn btn-outline" onclick="handleBuy()">Comprar ahora</button>
-          </div>
-
-          <div class="jamon-note" id="jamon-note"></div>
-        </div>
       </div>
     </section>
 
@@ -604,8 +88,8 @@
           <div class="moment-body">
             <h3 class="moment-title">Brunch entre amigas</h3>
             <p class="moment-text">
-              Mesa llena, mimosas, pancakes y ese pan de la casa que no se olvida. Ideal para celebrar o simplemente
-              ponerse al día.
+              Mesa llena, mimosas, pancakes y ese pan de la casa que no se olvida. Ideal
+              para celebrar o simplemente ponerse al día.
             </p>
           </div>
         </article>
@@ -619,7 +103,8 @@
           <div class="moment-body">
             <h3 class="moment-title">Desayunos corporativos</h3>
             <p class="moment-text">
-              Coffee breaks y brunchs para empresas que quieren algo más que lo típico. Todo armado y listo para servir.
+              Coffee breaks y brunchs para empresas que quieren algo más que lo típico.
+              Todo armado y listo para servir.
             </p>
           </div>
         </article>
@@ -633,14 +118,65 @@
           <div class="moment-body">
             <h3 class="moment-title">Celebrar en familia</h3>
             <p class="moment-text">
-              Cumpleaños, domingos largos, navidad o simplemente antojo. Panappetit se adapta a tu mesa y a tu momento.
+              Cumpleaños, domingos largos, navidad o simplemente antojo. Panappetit se
+              adapta a tu mesa y a tu momento.
             </p>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- ZONA DE DESPACHO / LOCALES -->
+    <!-- PAN DE JAMÓN -->
+    <section class="section reveal" id="jamon">
+      <div class="section-header">
+        <div class="section-kicker">Edición especial</div>
+        <h2 class="section-title">Pan de Jamón Panappetit</h2>
+        <p class="section-sub">
+          Nuestro pan de jamón se reserva rápido. Si quieres asegurarte el tuyo para las
+          fiestas, este es el lugar.
+        </p>
+      </div>
+
+      <div class="jamon-block">
+        <div class="jamon-image">
+          <span class="jamon-pill">Reserva anticipada</span>
+          <img
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
+            alt="Pan de jamón"
+          />
+        </div>
+
+        <div class="jamon-copy">
+          <h3>Reserva tu pan de jamón</h3>
+          <p>
+            Masa suave, relleno generoso y ese toque ahumado que se siente a casa. Hecho en
+            tandas limitadas para cuidar cada detalle.
+          </p>
+          <p class="jamon-meta">
+            Tamaños disponibles: familiar y individual · Retiro en local o envío en zonas seleccionadas.
+          </p>
+
+          <div class="jamon-actions">
+            <!-- Link de pago MercadoPago: MISMA PESTAÑA -->
+            <a
+              class="btn btn-primary"
+              id="reserve-btn"
+              href="https://mpago.la/2djJanG"
+            >
+              Reservar
+            </a>
+
+            <button class="btn btn-outline" id="buy-btn" type="button">
+              Comprar ahora
+            </button>
+          </div>
+
+          <div class="jamon-note" id="jamon-note"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCALES / DESPACHO -->
     <section class="section reveal" id="locales">
       <div class="section-header">
         <div class="section-kicker">Llegamos a ti</div>
@@ -649,15 +185,18 @@
 
       <div class="zone-strip">
         <div>
-          <p class="zone-text-main">Retira en nuestras sucursales Panappetit o recibe en casa.</p>
+          <p class="zone-text-main">
+            Retira en nuestras sucursales Panappetit o recibe en casa.
+          </p>
           <p style="font-size: 12px; margin-top: 4px; color: #d3b6a0;">
-            Algunos productos se pueden ajustar según la realidad de cada local.
+            Zona de despacho referencial. Se puede ajustar según la realidad de tus locales.
           </p>
         </div>
         <div class="zone-tags">
           <span class="zone-tag">Ñuñoa</span>
-          <span class="zone-tag">Independencia</span>
-          <span class="zone-tag">Santiago Centro - Franklin</span>
+          <span class="zone-tag">Providencia</span>
+          <span class="zone-tag">Las Condes</span>
+          <span class="zone-tag">La Reina</span>
         </div>
       </div>
     </section>
@@ -688,36 +227,9 @@
       </div>
     </div>
 
-    <div class="footer-bottom">© Panappetit. Todo con amor sabe mejor.</div>
+    <div class="footer-bottom">
+      © Panappetit. Todo con amor sabe mejor.
+    </div>
   </footer>
-
-  <script>
-    // Reveal on scroll
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    revealEls.forEach(el => observer.observe(el));
-
-    // Simple handlers for botones de Pan de Jamón
-    function handleReserve() {
-      const note = document.getElementById('jamon-note');
-      note.textContent = '¡Listo! Te contactaremos para confirmar tu reserva de pan de jamón. (Aquí iría el flujo real)';
-    }
-
-    function handleBuy() {
-      const note = document.getElementById('jamon-note');
-      note.textContent = 'Aquí podrías redirigir al e-commerce, link de pago o WhatsApp directo.';
-    }
-  </script>
 </body>
 </html>
