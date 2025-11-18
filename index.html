@@ -86,16 +86,7 @@
             Tamaños disponibles: familiar y individual · Retiro en local o envío en zonas seleccionadas.
           </p>
 
-          <div class="jamon-actions">
-            <!-- Link de pago MercadoPago: MISMA PESTAÑA -->
-            <a
-              class="btn btn-primary"
-              id="reserve-btn"
-              href="https://mpago.la/2djJanG"
-            >
-              Reservar
-            </a>
-
+          <div class="jamon-actions" id="jamon-actions">
             <button class="btn btn-outline" id="buy-btn" type="button">
               Comprar ahora
             </button>
@@ -103,6 +94,42 @@
 
           <div class="jamon-note" id="jam-note"></div>
         </div>
+        <script src="https://sdk.mercadopago.com/js/v2"></script>
+        <script>
+          const mp = new MercadoPago("TEST-4b8d1007-d6f1-4b20-9a71-233db8a11540", {
+            locale: "es-CL", // o es-AR según tu país
+          });
+
+          fetch("/api/create_preference", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: "Pan de Jamón Navideño",
+              quantity: 1,
+              unit_price: 5000,
+              currency_id: "CLP",
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (!data.id) {
+                console.error("No se recibió preference_id", data);
+                return;
+              }
+      
+              // Creamos el "wallet" (botón/checkout) con el preferenceId
+              mp.bricks().create("wallet", "jamon-actions", {
+                initialization: {
+                  preferenceId: data.id,
+                },
+              });
+            })
+            .catch((error) => {
+              console.error("Error creando la preferencia:", error);
+            });
+        </script>
       </div>
     </section>
     
