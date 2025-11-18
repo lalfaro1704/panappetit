@@ -1,4 +1,4 @@
-// Animación reveal on scroll
+// scroll reveal animation
 const revealEls = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver(
@@ -26,26 +26,22 @@ document.querySelectorAll("[data-scroll-target]").forEach((btn) => {
   });
 });
 
-// Botón "Hacer un pedido" del header
+// "Hacer un pedido" header button
 const navOrderBtn = document.getElementById("nav-order-btn");
 if (navOrderBtn) {
   navOrderBtn.addEventListener("click", () => {
-    // Aquí podrías poner tu link de Justo, Rappi, Uber, etc.
-    alert("Aquí iría el link para hacer un pedido (Justo, Rappi, web propia, etc.)");
+    // TODO: add link for delivery app (justo)
+    alert("TBD");
   });
 }
 
-// Botón "Comprar ahora" (Pan de Jamón)
+// "Comprar ahora" buttón
 const buyBtn = document.getElementById("buy-btn");
-const jamonNote = document.getElementById("jamon-note");
+const jamNote = document.getElementById("jam-note");
 
-if (buyBtn && jamonNote) {
+if (buyBtn && jamNote) {
   buyBtn.addEventListener("click", () => {
-    jamonNote.textContent =
+    jamNote.textContent =
       "Aquí podrías redirigir al e-commerce, link de pago o WhatsApp directo.";
   });
 }
-
-// Botón "Reservar" → link de pago directo (no se abre en otra pestaña)
-// No hace falta JS aquí: el <a href="https://mpago.la/2djJanG"> ya maneja el flujo.
-// Si quisieras controlar algo extra antes de ir al pago, podríamos hacerlo aquí.
