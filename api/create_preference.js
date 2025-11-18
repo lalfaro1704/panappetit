@@ -27,9 +27,9 @@ module.exports = async function handler(req, res) {
           },
         ],
         back_urls: {
-          success: "https://panappetit.vercel.app?status=success",
-          failure: "https://panappetit.vercel.app?status=failure",
-          pending: "https://panappetit.vercel.app?status=pending",
+          success: "https://www.panappetit.cl?status=success",
+          failure: "https://www.panappetit.cl?status=failure",
+          pending: "https://www.panappetit.cl?status=pending",
         },
         auto_return: "approved",
       },
